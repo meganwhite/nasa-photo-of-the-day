@@ -2,7 +2,13 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
 import Header from "./components/Header";
-import ImgCard from "./components/ImgCard"
+import ImgCard from "./components/ImgCard";
+import { Button } from "./components/StyledWidgets.js";
+import LoaderExampleIndeterminate from "./components/Loader";
+
+
+
+
 
 function App() {
   // create state variables
@@ -10,11 +16,14 @@ function App() {
   const[title,setTitle] = useState();
   const[info,setInfo] = useState();
   const[date,setDate] = useState();
+  const staticInfo = "";
+
+
 
   useEffect(() => {
     axios
       // call NASA API
-      .get(`https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY`)
+      .get(`https://api.nasa.gov/planetary/apod?api_key=wQe8tiUEu5Y5nDLpRryKo8aelQSCQOdYarI7uNoC`)
       .then( response => {
         // set states for each variable
         const dailyImg = response.data.url;
@@ -38,8 +47,9 @@ function App() {
   return (
     <div className="App">
       <Header date = {date} />
-      <ImgCard imgURL ={photo} imgTitle = {title} explanation = {info}/>
+      <ImgCard imgURL ={photo} imgTitle = {title} explanation = {info} />
     </div>
+
   );
 }
 
